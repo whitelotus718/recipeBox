@@ -8,7 +8,7 @@
 -- user.
 
 -- YOUR CODE HERE
-
+\c recipe_box;
 
 
 
@@ -25,7 +25,12 @@
 -- | updated     | TIMESTAMP    | NOT NULL, DEFAULT CURRENT_TIMESTAMP |
 
 -- YOUR CODE HERE
-
+CREATE TABLE recipes (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 
 
