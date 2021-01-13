@@ -28,7 +28,7 @@
 CREATE TABLE recipes (
     id SERIAL PRIMARY KEY,
     title VARCHAR(200) NOT NULL,
-    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -53,7 +53,13 @@ CREATE TABLE recipes (
 
 -- YOUR CODE HERE
 
-
+CREATE TABLE instructions(
+    id SERIAL PRIMARY KEY,
+    specification TEXT NOT NULL,
+    list_order INT NOT NULL,
+    recipe_id INT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id)
+);
 
 
 
@@ -70,7 +76,10 @@ CREATE TABLE recipes (
 -- YOUR CODE HERE
 
 
-
+CREATE TABLE unit_of_measure(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(20) NOT NULL
+);
 
 
 
@@ -91,7 +100,15 @@ CREATE TABLE recipes (
 -- | recipe_id          | INTEGER       | FK, NOT NULL |
 
 -- YOUR CODE HERE
-
+CREATE TABLE ingredients (
+    id SERIAL PRIMARY KEY,
+    amount NUMERIC(5, 2) NOT NULL,
+    unit_of_measure_id INT NOT NULL,
+    food_stuff VARCHAR(500) NOT NULL,
+    recipe_id INT NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id),
+    FOREIGN KEY (unit_of_measure_id) REFERENCES unit_of_measure(id)
+);
 
 
 
