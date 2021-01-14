@@ -8,7 +8,7 @@
 -- user.
 
 -- YOUR CODE HERE
-\c recipe_box;
+SET ROLE recipe_box_app;
 
 
 
@@ -76,7 +76,7 @@ CREATE TABLE instructions(
 -- YOUR CODE HERE
 
 
-CREATE TABLE unit_of_measure(
+CREATE TABLE units_of_measure(
     id SERIAL PRIMARY KEY,
     name VARCHAR(20) NOT NULL
 );
@@ -107,7 +107,7 @@ CREATE TABLE ingredients (
     food_stuff VARCHAR(500) NOT NULL,
     recipe_id INT NOT NULL,
     FOREIGN KEY (recipe_id) REFERENCES recipes(id),
-    FOREIGN KEY (unit_of_measure_id) REFERENCES unit_of_measure(id)
+    FOREIGN KEY (unit_of_measure_id) REFERENCES units_of_measure(id)
 );
 
 

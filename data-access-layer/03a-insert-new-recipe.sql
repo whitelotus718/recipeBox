@@ -17,3 +17,6 @@
 
 
 -- YOUR CODE HERE
+INSERT INTO recipes (title)
+VALUES
+($1);
