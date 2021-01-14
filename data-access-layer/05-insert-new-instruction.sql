@@ -5,7 +5,7 @@
 --     * $2 will contain the recipe id
 --
 -- It needs to include both positional parameters in the VALUES section so
--- that it inserts the value provided by the user.
+-- !that it inserts the value provided by the user.
 --
 -- You need to get the maximum value of "list_order" for the instructions
 -- associated with the recipe and add 1 to it to get the next value for
@@ -43,3 +43,11 @@
 
 
 -- YOUR CODE HERE
+INSERT INTO instructions (list_order, specification, recipe_id)
+VALUES
+(
+(SELECT COALESCE(MAX(list_order),0) + 1
+FROM instructions
+WHERE instructions.recipe_id = $2
+),
+$1, $2);

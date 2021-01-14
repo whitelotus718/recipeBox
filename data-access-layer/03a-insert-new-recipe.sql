@@ -17,6 +17,7 @@
 
 
 -- YOUR CODE HERE
-INSERT INTO recipes (title)
+INSERT INTO recipes(title)
 VALUES
-($1);
+($1)
+RETURNING id;

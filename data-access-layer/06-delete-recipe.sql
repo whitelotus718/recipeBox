@@ -13,5 +13,8 @@
 -- DELETE FROM ...
 -- WHERE ...
 
+DELETE FROM instructions
+WHERE recipe_id = $1;
 
--- YOUR CODE HERE
+DELETE FROM ingredients
+WHERE recipe_id = $1;
